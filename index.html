@@ -3,85 +3,677 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>Nehme Haidura | AI & Machine Learning Portfolio</title>
+  <meta name="description" content="AI and Machine Learning portfolio of Nehme Haidura. LLM evaluation, NLP, computer vision, graph learning, healthcare AI, and data analytics." />
 
   <style>
-    *{margin:0;padding:0;box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{font-family:Inter,Arial,sans-serif;background:#020617;color:#fff;line-height:1.6}
-    a{text-decoration:none;color:inherit}
-    .container{width:min(1200px,92%);margin:auto}
-
-    nav{position:sticky;top:0;z-index:99;background:rgba(2,6,23,.88);backdrop-filter:blur(16px);border-bottom:1px solid rgba(148,163,184,.15)}
-    .nav-inner{height:72px;display:flex;align-items:center;justify-content:space-between}
-    .logo{display:flex;align-items:center;gap:14px;font-size:1.35rem;font-weight:800}
-    .logo-mark{font-size:1.7rem;font-weight:900;color:#2563eb}
-    .logo-mark span{color:#fff}
-    .nav-links{display:flex;gap:34px;color:#e5e7eb;font-size:.98rem}
-    .nav-links a:hover,.nav-links a.active{color:#3b82f6}
-
-    .hero{position:relative;min-height:720px;padding:95px 0 40px;overflow:hidden;background:#020617}
-    .hero::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 75% 35%,rgba(37,99,235,.35),transparent 38%),radial-gradient(circle at 90% 80%,rgba(147,51,234,.22),transparent 35%)}
-    .hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:.9fr 1.1fr;align-items:center;gap:35px}
-    .badge{display:inline-flex;align-items:center;gap:10px;background:rgba(37,99,235,.25);color:#93c5fd;border-radius:999px;padding:10px 20px;font-size:.9rem;letter-spacing:.4px;margin-bottom:25px}
-    .badge::before{content:"";width:9px;height:9px;border-radius:50%;background:#3b82f6}
-    h1{font-size:clamp(3.5rem,7vw,6.2rem);line-height:.92;letter-spacing:-4px;margin-bottom:20px}
-    h1 span{display:block;color:#2563eb}
-    .subtitle{font-size:1.15rem;font-weight:700;margin-bottom:16px}
-    .hero p{color:#cbd5e1;font-size:1.05rem;max-width:540px;margin-bottom:28px}
-    .hero-buttons{display:flex;gap:14px;flex-wrap:wrap}
-    .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:14px 24px;border-radius:10px;font-weight:700;border:1px solid rgba(148,163,184,.35);transition:.25s}
-    .btn.primary{background:#2563eb;border-color:#2563eb}
-    .btn:hover{transform:translateY(-2px);background:#1d4ed8}
-
-    .hero-visual img{width:100%;max-width:760px;display:block;filter:drop-shadow(0 0 35px rgba(37,99,235,.45))}
-    .section-title{display:flex;align-items:center;justify-content:center;gap:22px;text-align:center;margin:40px 0 24px}
-    .section-title::before,.section-title::after{content:"";height:1px;background:rgba(148,163,184,.35);flex:1}
-    .section-title h2{font-size:1.8rem}
-    .section-sub{text-align:center;color:#cbd5e1;margin-bottom:24px}
-
-    .featured-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:18px}
-    .mini-card{background:linear-gradient(180deg,rgba(15,23,42,.95),rgba(2,6,23,.95));border:1px solid rgba(148,163,184,.22);border-radius:14px;padding:24px 18px;text-align:center;min-height:240px;transition:.25s}
-    .mini-card:hover{transform:translateY(-6px);border-color:#2563eb}
-    .icon{font-size:2.4rem;margin-bottom:14px}
-    .mini-card h3{font-size:1.05rem;margin-bottom:10px}
-    .mini-card p{font-size:.9rem;color:#cbd5e1;margin-bottom:14px}
-    .tags{display:flex;justify-content:center;flex-wrap:wrap;gap:7px;margin-top:12px}
-    .tag{font-size:.72rem;padding:5px 9px;border-radius:999px;background:rgba(37,99,235,.18);color:#bfdbfe}
-    section{padding:85px 0;border-top:1px solid rgba(148,163,184,.12)}
-    .heading{text-align:center;margin-bottom:35px}
-    .heading span{color:#3b82f6;font-weight:800;text-transform:uppercase;font-size:.8rem;letter-spacing:1.5px}
-    .heading h2{font-size:2.4rem;margin-top:7px}
-
-    .projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
-    .card{background:rgba(15,23,42,.9);border:1px solid rgba(148,163,184,.22);border-radius:18px;padding:24px;box-shadow:0 20px 40px rgba(0,0,0,.22)}
-    .card.featured{grid-column:span 2}
-    .card img{width:100%;max-height:360px;object-fit:contain;border-radius:14px;background:#020617;border:1px solid rgba(255,255,255,.08);margin-bottom:18px}
-    .card h3{font-size:1.45rem;margin-bottom:8px}
-    .meta{color:#60a5fa;font-weight:700;margin-bottom:12px}
-    .card p{color:#cbd5e1;margin-bottom:12px}
-    .pipeline{display:flex;flex-wrap:wrap;gap:9px;margin-top:18px}
-    .pipeline span{font-size:.78rem;padding:7px 11px;border-radius:999px;background:rgba(59,130,246,.14);color:#bfdbfe;border:1px solid rgba(59,130,246,.22)}
-    .image-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px}
-    .image-grid .card{padding:14px}
-    .image-grid img{height:200px}
-    .two-col{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
-    .contact{text-align:center;max-width:850px;margin:auto}
-    footer{text-align:center;color:#94a3b8;padding:28px;border-top:1px solid rgba(148,163,184,.15)}
-
-    @media(max-width:1050px){
-      .hero-grid,.projects-grid,.two-col{grid-template-columns:1fr}
-      .card.featured{grid-column:span 1}
-      .featured-grid{grid-template-columns:repeat(2,1fr)}
-      .hero{text-align:center}
-      .hero p{margin-left:auto;margin-right:auto}
-      .hero-buttons{justify-content:center}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
-    @media(max-width:700px){
-      .nav-links{display:none}
-      .featured-grid,.image-grid{grid-template-columns:1fr}
-      h1{font-size:3.5rem}
+
+    :root {
+      --bg: #020617;
+      --bg2: #07111f;
+      --card: rgba(15, 23, 42, 0.82);
+      --card2: rgba(30, 41, 59, 0.72);
+      --blue: #3b82f6;
+      --blue2: #60a5fa;
+      --cyan: #38bdf8;
+      --green: #34d399;
+      --text: #f8fafc;
+      --muted: #cbd5e1;
+      --soft: #94a3b8;
+      --border: rgba(148, 163, 184, 0.22);
+      --shadow: 0 25px 70px rgba(0, 0, 0, 0.45);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, Arial, sans-serif;
+      background:
+        radial-gradient(circle at 80% 5%, rgba(37, 99, 235, 0.28), transparent 28%),
+        radial-gradient(circle at 0% 30%, rgba(56, 189, 248, 0.13), transparent 24%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(1220px, 92%);
+      margin: auto;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(2, 6, 23, 0.78);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.14);
+    }
+
+    .nav-inner {
+      height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-weight: 900;
+      letter-spacing: -0.4px;
+      font-size: 1.22rem;
+    }
+
+    .logo-mark {
+      width: 46px;
+      height: 46px;
+      border-radius: 15px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, #2563eb, #38bdf8);
+      color: white;
+      box-shadow: 0 0 35px rgba(59, 130, 246, 0.45);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      color: #dbeafe;
+      font-size: 0.94rem;
+      font-weight: 600;
+    }
+
+    .nav-links a {
+      opacity: 0.9;
+      transition: 0.25s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--blue2);
+      opacity: 1;
+    }
+
+    .hero {
+      position: relative;
+      min-height: calc(100vh - 74px);
+      padding: 72px 0 54px;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(148, 163, 184, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(148, 163, 184, 0.05) 1px, transparent 1px);
+      background-size: 72px 72px;
+      mask-image: linear-gradient(to bottom, black, transparent 85%);
+      opacity: 0.8;
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      align-items: center;
+      gap: 34px;
+    }
+
+    .hero-badge {
+      width: fit-content;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      background: rgba(37, 99, 235, 0.18);
+      color: #bfdbfe;
+      border: 1px solid rgba(96, 165, 250, 0.34);
+      font-size: 0.84rem;
+      font-weight: 800;
+      letter-spacing: 0.8px;
+      margin-bottom: 26px;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 99px;
+      background: var(--blue2);
+      box-shadow: 0 0 18px var(--blue2);
+    }
+
+    .hero h1 {
+      font-size: clamp(3.6rem, 7.2vw, 6.8rem);
+      line-height: 0.9;
+      letter-spacing: -5px;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 span {
+      color: var(--blue);
+      text-shadow: 0 0 45px rgba(59, 130, 246, 0.35);
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1rem, 1.8vw, 1.28rem);
+      color: white;
+      font-weight: 800;
+      margin-bottom: 18px;
+    }
+
+    .hero-description {
+      max-width: 650px;
+      color: var(--muted);
+      font-size: 1.06rem;
+      margin-bottom: 30px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 13px 21px;
+      border-radius: 14px;
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      font-weight: 800;
+      transition: 0.25s ease;
+      background: rgba(15, 23, 42, 0.65);
+      color: white;
+    }
+
+    .btn.primary {
+      background: linear-gradient(135deg, #2563eb, #38bdf8);
+      border: none;
+      box-shadow: 0 16px 45px rgba(37, 99, 235, 0.36);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 40px rgba(37, 99, 235, 0.2);
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 520px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-visual::before {
+      content: "";
+      position: absolute;
+      width: 86%;
+      height: 86%;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.32), transparent 62%);
+      filter: blur(18px);
+    }
+
+    .hero-visual img {
+      position: relative;
+      width: min(760px, 100%);
+      animation: float 5.5s ease-in-out infinite;
+      filter:
+        drop-shadow(0 0 30px rgba(59, 130, 246, 0.55))
+        drop-shadow(0 0 70px rgba(37, 99, 235, 0.28));
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-14px); }
+    }
+
+    .hero-projects {
+      position: relative;
+      z-index: 2;
+      margin-top: 44px;
+    }
+
+    .line-title {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      margin-bottom: 24px;
+    }
+
+    .line-title::before,
+    .line-title::after {
+      content: "";
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(148, 163, 184, 0.45), transparent);
+      flex: 1;
+    }
+
+    .line-title h2 {
+      font-size: clamp(1.6rem, 3vw, 2.1rem);
+      text-align: center;
+      letter-spacing: -0.8px;
+    }
+
+    .featured-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+    }
+
+    .mini-card {
+      min-height: 245px;
+      padding: 24px 16px;
+      border-radius: 20px;
+      background:
+        linear-gradient(180deg, rgba(15, 23, 42, 0.92), rgba(2, 6, 23, 0.92));
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      text-align: center;
+      transition: 0.28s ease;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .mini-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(96, 165, 250, 0.65);
+      box-shadow: 0 25px 55px rgba(37, 99, 235, 0.22);
+    }
+
+    .project-icon {
+      width: 72px;
+      height: 72px;
+      margin: 0 auto 18px;
+      border-radius: 22px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.45), rgba(56, 189, 248, 0.14));
+      border: 1px solid rgba(96, 165, 250, 0.42);
+      box-shadow: inset 0 0 22px rgba(59, 130, 246, 0.12), 0 0 30px rgba(37, 99, 235, 0.22);
+      font-size: 2rem;
+    }
+
+    .mini-card h3 {
+      font-size: 1.05rem;
+      margin-bottom: 8px;
+    }
+
+    .mini-card p {
+      color: var(--muted);
+      font-size: 0.87rem;
+      line-height: 1.55;
+    }
+
+    .tags {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 14px;
+    }
+
+    .tag {
+      font-size: 0.72rem;
+      padding: 5px 9px;
+      border-radius: 999px;
+      background: rgba(59, 130, 246, 0.16);
+      color: #dbeafe;
+      border: 1px solid rgba(96, 165, 250, 0.18);
+    }
+
+    section {
+      padding: 92px 0;
+      border-top: 1px solid rgba(148, 163, 184, 0.12);
+    }
+
+    .heading {
+      text-align: center;
+      margin-bottom: 42px;
+    }
+
+    .heading span {
+      color: var(--blue2);
+      text-transform: uppercase;
+      letter-spacing: 1.8px;
+      font-size: 0.78rem;
+      font-weight: 900;
+    }
+
+    .heading h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      letter-spacing: -1.4px;
+      margin-top: 8px;
+    }
+
+    .heading p {
+      color: var(--muted);
+      max-width: 760px;
+      margin: 12px auto 0;
+    }
+
+    .about-card {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .glass {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .glass p, .glass li {
+      color: var(--muted);
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      height: 100%;
+    }
+
+    .stat {
+      background: rgba(2, 6, 23, 0.45);
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      border-radius: 20px;
+      padding: 20px;
+    }
+
+    .stat strong {
+      display: block;
+      color: var(--green);
+      font-size: 1.55rem;
+      margin-bottom: 4px;
+    }
+
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .skill {
+      padding: 9px 13px;
+      border-radius: 999px;
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.22);
+      color: #e0f2fe;
+      font-weight: 750;
+      font-size: 0.86rem;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .project-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 26px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: 0.28s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(96, 165, 250, 0.52);
+    }
+
+    .project-card.featured {
+      grid-column: span 2;
+    }
+
+    .project-media {
+      padding: 18px 18px 0;
+    }
+
+    .project-media img {
+      width: 100%;
+      height: 330px;
+      object-fit: contain;
+      background: #020617;
+      border-radius: 18px;
+      border: 1px solid rgba(148, 163, 184, 0.16);
+    }
+
+    .project-card.featured .project-media img {
+      height: 430px;
+    }
+
+    .project-content {
+      padding: 24px;
+    }
+
+    .project-content h3 {
+      font-size: 1.45rem;
+      line-height: 1.25;
+      margin-bottom: 8px;
+    }
+
+    .meta {
+      color: var(--green);
+      font-weight: 850;
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+    }
+
+    .project-content p {
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .pipeline {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .pipeline span {
+      font-size: 0.78rem;
+      padding: 7px 11px;
+      border-radius: 999px;
+      color: #dbeafe;
+      background: rgba(37, 99, 235, 0.14);
+      border: 1px solid rgba(96, 165, 250, 0.2);
+      font-weight: 750;
+    }
+
+    .block-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      padding: 0 18px 20px;
+    }
+
+    .block-card {
+      background: rgba(2, 6, 23, 0.44);
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      border-radius: 18px;
+      padding: 13px;
+    }
+
+    .block-card img {
+      height: 210px;
+      width: 100%;
+      object-fit: contain;
+      border-radius: 13px;
+      background: #020617;
+      margin-bottom: 10px;
+    }
+
+    .block-card p {
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 18px;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 210px 1fr;
+      gap: 20px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 22px;
+    }
+
+    .timeline-date {
+      color: var(--blue2);
+      font-weight: 900;
+    }
+
+    .timeline-item h3 {
+      margin-bottom: 5px;
+    }
+
+    ul {
+      padding-left: 20px;
+      margin-top: 10px;
+    }
+
+    .contact-box {
+      text-align: center;
+      background:
+        linear-gradient(135deg, rgba(37, 99, 235, 0.2), rgba(56, 189, 248, 0.08)),
+        var(--card);
+      border: 1px solid rgba(96, 165, 250, 0.25);
+      border-radius: 28px;
+      padding: 48px 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .contact-box p {
+      color: var(--muted);
+      max-width: 720px;
+      margin: 0 auto 22px;
+    }
+
+    footer {
+      padding: 30px 0;
+      text-align: center;
+      color: var(--soft);
+      background: rgba(2, 6, 23, 0.9);
+      border-top: 1px solid rgba(148, 163, 184, 0.15);
+    }
+
+    @media (max-width: 1050px) {
+      .hero-grid,
+      .about-card,
+      .projects-grid,
+      .two-col {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        text-align: center;
+      }
+
+      .hero-badge {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-description {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-buttons {
+        justify-content: center;
+      }
+
+      .project-card.featured {
+        grid-column: span 1;
+      }
+
+      .featured-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .block-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .project-card.featured .project-media img,
+      .project-media img {
+        height: auto;
+        max-height: 430px;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 48px;
+      }
+
+      .hero h1 {
+        letter-spacing: -3px;
+      }
+
+      .hero-visual {
+        min-height: auto;
+      }
+
+      .featured-grid,
+      .stat-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline-item {
+        grid-template-columns: 1fr;
+      }
+
+      .glass,
+      .project-content {
+        padding: 20px;
+      }
     }
   </style>
 </head>
@@ -89,13 +681,17 @@
 <body>
   <nav>
     <div class="container nav-inner">
-      <a class="logo" href="#top"><span class="logo-mark">N<span>H</span></span> Nehme Haidura</a>
+      <a href="#top" class="logo">
+        <span class="logo-mark">NH</span>
+        Nehme Haidura
+      </a>
+
       <div class="nav-links">
-        <a class="active" href="#top">Home</a>
+        <a href="#top">Home</a>
         <a href="#about">About</a>
         <a href="#projects">Projects</a>
-        <a href="#publications">Publications</a>
-        <a href="Nehme_Haidura_Resume.pdf" target="_blank">Resume</a>
+        <a href="#experience">Experience</a>
+        <a href="#publications">Research</a>
         <a href="#contact">Contact</a>
       </div>
     </div>
@@ -104,65 +700,98 @@
   <main id="top">
     <section class="hero">
       <div class="container hero-grid">
-        <div>
-          <div class="badge">AI & MACHINE LEARNING RESEARCHER</div>
-          <h1>Nehme <span>Haidura</span></h1>
-          <div class="subtitle">AI Evaluation • NLP Research • Machine Learning • Computer Vision</div>
-          <p>
-            Graduate student at the University of Windsor specializing in AI evaluation frameworks,
-            large language model assessment, NLP research, and intelligent systems.
+        <div class="hero-left">
+          <div class="hero-badge">
+            <span class="dot"></span>
+            AI & MACHINE LEARNING RESEARCHER
+          </div>
+
+          <h1>
+            Nehme <br />
+            <span>Haidura</span>
+          </h1>
+
+          <div class="hero-subtitle">
+            AI Evaluation • NLP Research • Machine Learning • Computer Vision
+          </div>
+
+          <p class="hero-description">
+            Graduate researcher specializing in LLM evaluation, NLP, machine learning,
+            computer vision, graph learning, and applied AI systems. I build reliable,
+            interpretable, and research-driven solutions that connect technical depth with real-world impact.
           </p>
+
           <div class="hero-buttons">
             <a class="btn primary" href="Nehme_Haidura_Resume.pdf" target="_blank">Download Resume</a>
+            <a class="btn" href="#projects">View Projects</a>
             <a class="btn" href="#contact">Contact Me</a>
           </div>
         </div>
 
         <div class="hero-visual">
-          <img src="Images/hero-brain.png" alt="AI brain network graphic">
+          <img src="Images/hero-brain.png" alt="AI brain network graphic" />
         </div>
       </div>
 
-      <div class="container">
-        <div class="section-title">
+      <div class="container hero-projects">
+        <div class="line-title">
           <h2>Featured Projects</h2>
         </div>
-        <p class="section-sub">A selection of my recent research and technical projects</p>
 
         <div class="featured-grid">
           <a class="mini-card" href="#hlfeval">
-            <div class="icon">🧠</div>
+            <div class="project-icon">⚡</div>
             <h3>HLFEval</h3>
-            <p>Comprehensive NLP evaluation framework for LLMs with automated testing, metrics, and reporting.</p>
-            <div class="tags"><span class="tag">Python</span><span class="tag">NLP</span><span class="tag">LLM Evaluation</span></div>
+            <p>Hybrid LLM evaluation framework for semantic relevance, fluency, safety, and factuality.</p>
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">NLP</span>
+              <span class="tag">LLM Evaluation</span>
+            </div>
           </a>
 
           <a class="mini-card" href="#representation">
-            <div class="icon">💬</div>
+            <div class="project-icon">🧠</div>
             <h3>Representation Learning</h3>
-            <p>Research on clustering and semantic representation learning techniques.</p>
-            <div class="tags"><span class="tag">PyTorch</span><span class="tag">NLP</span><span class="tag">Autoencoders</span></div>
+            <p>Clustering and manifold analysis using nonlinear datasets and graph-based similarity methods.</p>
+            <div class="tags">
+              <span class="tag">Scikit-learn</span>
+              <span class="tag">ML</span>
+              <span class="tag">Clustering</span>
+            </div>
           </a>
 
           <a class="mini-card" href="#stereo">
-            <div class="icon">👁️</div>
+            <div class="project-icon">👁</div>
             <h3>Stereo Vision</h3>
-            <p>Depth estimation from stereo Images using computer vision techniques.</p>
-            <div class="tags"><span class="tag">Python</span><span class="tag">OpenCV</span><span class="tag">Deep Learning</span></div>
+            <p>3D reconstruction using OpenCV, SIFT, FLANN, StereoSGBM, and point clouds.</p>
+            <div class="tags">
+              <span class="tag">OpenCV</span>
+              <span class="tag">3D</span>
+              <span class="tag">Vision</span>
+            </div>
           </a>
 
           <a class="mini-card" href="#hgnn">
-            <div class="icon">🔗</div>
+            <div class="project-icon">🔗</div>
             <h3>HGNN</h3>
-            <p>Hypergraph Neural Network research for document classification and information retrieval.</p>
-            <div class="tags"><span class="tag">PyTorch</span><span class="tag">GNN</span><span class="tag">NLP</span></div>
+            <p>Topology-aware hypergraph construction for neural network learning and classification.</p>
+            <div class="tags">
+              <span class="tag">PyTorch</span>
+              <span class="tag">GNN</span>
+              <span class="tag">DOSAGE</span>
+            </div>
           </a>
 
           <a class="mini-card" href="#breast-cancer">
-            <div class="icon">📊</div>
+            <div class="project-icon">📊</div>
             <h3>Breast Cancer ML</h3>
-            <p>Comparative analysis of ML algorithms for breast cancer classification.</p>
-            <div class="tags"><span class="tag">Python</span><span class="tag">Scikit-learn</span><span class="tag">ML</span></div>
+            <p>Healthcare AI classification pipeline using SMOTE, Random Forest, and SVM models.</p>
+            <div class="tags">
+              <span class="tag">Healthcare AI</span>
+              <span class="tag">ML</span>
+              <span class="tag">Analytics</span>
+            </div>
           </a>
         </div>
       </div>
@@ -172,14 +801,84 @@
       <div class="container">
         <div class="heading">
           <span>About</span>
-          <h2>Building reliable AI systems through research and evaluation</h2>
-        </div>
-        <div class="card">
+          <h2>Building intelligent systems through research, testing, and evaluation</h2>
           <p>
-            I am a Computer Science graduate researcher focused on applied AI, LLM evaluation,
-            NLP, computer vision, graph learning, software quality assurance, and data analytics.
-            My work combines implementation, testing, and evaluation to build interpretable and reliable AI systems.
+            I combine AI research, software quality, data analysis, and practical implementation
+            to design systems that are accurate, interpretable, and useful.
           </p>
+        </div>
+
+        <div class="about-card">
+          <div class="glass">
+            <p>
+              I am a Computer Science graduate researcher focused on applied AI, LLM evaluation,
+              natural language processing, machine learning, computer vision, graph learning,
+              software quality assurance, and data analytics. My work includes building evaluation
+              frameworks, developing Python-based pipelines, analyzing model outputs, and presenting
+              technical results through research and visual reporting.
+            </p>
+            <br />
+            <p>
+              I am especially interested in reliable AI systems, multi-dimensional evaluation,
+              interpretable scoring, and practical machine learning workflows that support
+              decision-making in real applications.
+            </p>
+          </div>
+
+          <div class="stat-grid">
+            <div class="stat">
+              <strong>LLM</strong>
+              <span>Evaluation Research</span>
+            </div>
+            <div class="stat">
+              <strong>8+</strong>
+              <span>Technical Projects</span>
+            </div>
+            <div class="stat">
+              <strong>AI</strong>
+              <span>Machine Learning Focus</span>
+            </div>
+            <div class="stat">
+              <strong>3D</strong>
+              <span>Computer Vision Work</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="heading">
+          <span>Skills</span>
+          <h2>Technical Toolkit</h2>
+        </div>
+
+        <div class="glass skills-grid">
+          <span class="skill">Artificial Intelligence</span>
+          <span class="skill">Machine Learning</span>
+          <span class="skill">Deep Learning</span>
+          <span class="skill">Large Language Models</span>
+          <span class="skill">LLM Evaluation</span>
+          <span class="skill">LLM-as-a-Judge</span>
+          <span class="skill">Prompt Engineering</span>
+          <span class="skill">Natural Language Processing</span>
+          <span class="skill">Factuality Assessment</span>
+          <span class="skill">Safety Evaluation</span>
+          <span class="skill">Computer Vision</span>
+          <span class="skill">OpenCV</span>
+          <span class="skill">Graph Neural Networks</span>
+          <span class="skill">Representation Learning</span>
+          <span class="skill">Python</span>
+          <span class="skill">PyTorch</span>
+          <span class="skill">Scikit-learn</span>
+          <span class="skill">Pandas</span>
+          <span class="skill">NumPy</span>
+          <span class="skill">SQL</span>
+          <span class="skill">Data Visualization</span>
+          <span class="skill">QA Testing</span>
+          <span class="skill">Git & GitHub</span>
+          <span class="skill">Technical Support</span>
         </div>
       </div>
     </section>
@@ -188,94 +887,216 @@
       <div class="container">
         <div class="heading">
           <span>Projects</span>
-          <h2>Technical Projects</h2>
+          <h2>Featured Technical Projects</h2>
+          <p>
+            Selected work across AI evaluation, NLP, computer vision, graph learning,
+            representation learning, healthcare AI, and multimodal deep learning.
+          </p>
         </div>
 
         <div class="projects-grid">
-          <article class="card featured" id="hlfeval">
-            <img src="Images/full.png" alt="HLFEval full framework">
-            <h3>HLFEval: Hybrid LLM-Based Framework for Sentence-Level Evaluation</h3>
-            <p class="meta">2025 - Present</p>
-            <p>
-              Developed a hybrid framework for evaluating LLM-generated responses across semantic relevance,
-              fluency, safety, and factuality. The framework combines metric computation, LLM-as-a-Judge,
-              and learned weighting into one composite score.
-            </p>
+          <article class="project-card featured" id="hlfeval">
+            <div class="project-media">
+              <img src="Images/full.png" alt="HLFEval full framework diagram" />
+            </div>
 
-            <div class="image-grid">
-              <div class="card">
-                <img src="Images/New_A.png" alt="HLFEval Block A">
-                <p><strong>Block A:</strong> Data preprocessing and input construction.</p>
+            <div class="project-content">
+              <h3>HLFEval: Hybrid LLM-Based Framework for Sentence-Level Evaluation</h3>
+              <p class="meta">2025 - Present</p>
+              <p>
+                Developed a hybrid evaluation framework for sentence-level assessment of LLM-generated text.
+                The framework combines semantic relevance, fluency, safety, and factuality into a learned
+                multi-dimensional scoring system.
+              </p>
+            </div>
+
+            <div class="block-grid">
+              <div class="block-card">
+                <img src="Images/New_A.png" alt="HLFEval Block A" />
+                <p><strong>Block A:</strong> data preparation and input construction.</p>
               </div>
-              <div class="card">
-                <img src="Images/New_B.png" alt="HLFEval Block B">
-                <p><strong>Block B:</strong> Metric computation for quality dimensions.</p>
+              <div class="block-card">
+                <img src="Images/New_B.png" alt="HLFEval Block B" />
+                <p><strong>Block B:</strong> metric computation across quality dimensions.</p>
               </div>
-              <div class="card">
-                <img src="Images/New_C.png" alt="HLFEval Block C">
-                <p><strong>Block C:</strong> Weight learning and final score generation.</p>
+              <div class="block-card">
+                <img src="Images/New_C.png" alt="HLFEval Block C" />
+                <p><strong>Block C:</strong> learned weighting and final score generation.</p>
               </div>
             </div>
 
-            <div class="pipeline">
-              <span>LLM Evaluation</span><span>NLP</span><span>Semantic Relevance</span><span>Fluency</span><span>Safety</span><span>Factuality</span>
+            <div class="project-content">
+              <div class="pipeline">
+                <span>LLM Evaluation</span>
+                <span>NLP</span>
+                <span>Semantic Relevance</span>
+                <span>Fluency</span>
+                <span>Safety</span>
+                <span>Factuality</span>
+                <span>Python</span>
+              </div>
             </div>
           </article>
 
-          <article class="card" id="representation">
-            <img src="Images/spectral-clustering-comparison.png" alt="Representation learning project">
-            <h3>Representation Learning: Spectral Clustering and Manifold Analysis</h3>
-            <p class="meta">2025</p>
-            <p>
-              Evaluated clustering methods on nonlinear datasets and compared K-Means with Spectral Clustering
-              to analyze graph-based similarity and representation learning.
-            </p>
-            <div class="pipeline"><span>Spectral Clustering</span><span>K-Means</span><span>Scikit-learn</span></div>
+          <article class="project-card" id="representation">
+            <div class="project-media">
+              <img src="Images/spectral-clustering-comparison.png" alt="Spectral clustering comparison" />
+            </div>
+            <div class="project-content">
+              <h3>Representation Learning: Spectral Clustering and Manifold Analysis</h3>
+              <p class="meta">2025</p>
+              <p>
+                Evaluated clustering approaches on nonlinear synthetic datasets and compared K-Means with
+                Spectral Clustering to show how graph-based similarity captures nonlinear structure.
+              </p>
+              <div class="pipeline">
+                <span>Spectral Clustering</span>
+                <span>K-Means</span>
+                <span>Representation Learning</span>
+                <span>Scikit-learn</span>
+              </div>
+            </div>
           </article>
 
-          <article class="card" id="stereo">
-            <img src="Images/point-cloud-3d.png" alt="Stereo vision 3D reconstruction">
-            <h3>Stereo Vision and 3D Scene Reconstruction using OpenCV</h3>
-            <p class="meta">2025</p>
-            <p>
-              Developed a stereo vision pipeline using OpenCV, SIFT, FLANN, epipolar geometry,
-              disparity maps, StereoSGBM, and 3D point cloud reconstruction.
-            </p>
-            <div class="pipeline"><span>OpenCV</span><span>SIFT</span><span>FLANN</span><span>3D Reconstruction</span></div>
+          <article class="project-card" id="stereo">
+            <div class="project-media">
+              <img src="Images/point-cloud-3d.png" alt="3D point cloud reconstruction" />
+            </div>
+            <div class="project-content">
+              <h3>Stereo Vision and 3D Scene Reconstruction using OpenCV</h3>
+              <p class="meta">2025</p>
+              <p>
+                Built a complete stereo vision pipeline using OpenCV, SIFT feature detection,
+                FLANN matching, epipolar geometry, disparity estimation, StereoSGBM, and point cloud reconstruction.
+              </p>
+              <div class="pipeline">
+                <span>OpenCV</span>
+                <span>SIFT</span>
+                <span>FLANN</span>
+                <span>StereoSGBM</span>
+                <span>3D Reconstruction</span>
+              </div>
+            </div>
           </article>
 
-          <article class="card" id="hgnn">
-            <img src="Images/dosage-hgnn-results.png" alt="HGNN results">
-            <h3>Topology-Aware Hypergraph Construction for HGNNs</h3>
-            <p class="meta">2025</p>
-            <p>
-              Developed and evaluated topology-aware hypergraph construction methods using DOSAGE
-              on the Cora citation dataset for node classification.
-            </p>
-            <div class="pipeline"><span>HGNN</span><span>DOSAGE</span><span>Graph Learning</span><span>PyTorch</span></div>
+          <article class="project-card" id="hgnn">
+            <div class="project-media">
+              <img src="Images/dosage-hgnn-results.png" alt="DOSAGE HGNN results" />
+            </div>
+            <div class="project-content">
+              <h3>Topology-Aware Hypergraph Construction for Hypergraph Neural Networks</h3>
+              <p class="meta">2025</p>
+              <p>
+                Developed and evaluated topology-aware hypergraph construction methods using the DOSAGE algorithm
+                on the Cora citation dataset for node classification.
+              </p>
+              <div class="pipeline">
+                <span>Graph Learning</span>
+                <span>Hypergraph Neural Networks</span>
+                <span>DOSAGE</span>
+                <span>PyTorch</span>
+              </div>
+            </div>
           </article>
 
-          <article class="card" id="breast-cancer">
-            <img src="Images/breast-cancer-pipeline.png" alt="Breast cancer ML pipeline">
-            <h3>Breast Cancer Subtype Classification using Machine Learning</h3>
-            <p class="meta">2025</p>
-            <p>
-              Built a machine learning pipeline using METABRIC data with preprocessing, SMOTE,
-              feature selection, Random Forest, and SVM classification.
-            </p>
-            <div class="pipeline"><span>Random Forest</span><span>SVM</span><span>SMOTE</span><span>Healthcare AI</span></div>
+          <article class="project-card" id="breast-cancer">
+            <div class="project-media">
+              <img src="Images/breast-cancer-pipeline.png" alt="Breast cancer ML pipeline" />
+            </div>
+            <div class="project-content">
+              <h3>Breast Cancer Subtype Classification using Machine Learning</h3>
+              <p class="meta">2025</p>
+              <p>
+                Built a machine learning framework using the METABRIC dataset with preprocessing,
+                SMOTE balancing, feature selection, Random Forest, and SVM classification.
+              </p>
+              <div class="pipeline">
+                <span>Healthcare AI</span>
+                <span>Random Forest</span>
+                <span>SVM</span>
+                <span>SMOTE</span>
+              </div>
+            </div>
           </article>
 
-          <article class="card">
-            <img src="Images/archvision-poster.png" alt="ArchVision project">
-            <h3>ArchVision: From CNNs to Multimodal</h3>
-            <p class="meta">2025</p>
-            <p>
-              Evaluated deep learning and multimodal architectures for scene classification using 25,000+
-              Images and 270+ controlled experiments.
-            </p>
-            <div class="pipeline"><span>Deep Learning</span><span>CLIP</span><span>Swin Transformers</span><span>Computer Vision</span></div>
+          <article class="project-card">
+            <div class="project-media">
+              <img src="Images/archvision-poster.png" alt="ArchVision project poster" />
+            </div>
+            <div class="project-content">
+              <h3>ArchVision: From CNNs to Multimodal</h3>
+              <p class="meta">2025</p>
+              <p>
+                Implemented and compared deep learning and multimodal architectures for large-scale scene classification
+                using 25,000+ images and 270+ controlled experiments.
+              </p>
+              <div class="pipeline">
+                <span>Deep Learning</span>
+                <span>CLIP</span>
+                <span>Swin Transformers</span>
+                <span>Computer Vision</span>
+              </div>
+            </div>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="container">
+        <div class="heading">
+          <span>Experience</span>
+          <h2>Professional Background</h2>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-date">May 2025 - Apr 2026</div>
+            <div>
+              <h3>Graduate Assistant</h3>
+              <p class="meta">University of Windsor · Windsor, Ontario</p>
+              <ul>
+                <li>Supported undergraduate courses through tutoring, grading, and technical guidance.</li>
+                <li>Assisted students with concepts in cyber ethics, internet technologies, and information security.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-date">Jan 2025 - Present</div>
+            <div>
+              <h3>AI Evaluation Specialist</h3>
+              <p class="meta">Outlier · Remote</p>
+              <ul>
+                <li>Evaluated AI-generated responses for factuality, reasoning, safety, and instruction adherence.</li>
+                <li>Identified hallucinations, inconsistencies, and quality issues in model outputs.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-date">Jan 2023 - Dec 2023</div>
+            <div>
+              <h3>Technical Support Specialist</h3>
+              <p class="meta">Jiffy Tech Services · Full-Time</p>
+              <ul>
+                <li>Troubleshot software and system-related issues and documented technical resolutions.</li>
+                <li>Escalated complex incidents and supported customers with technical inquiries.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-date">Jan 2022 - Dec 2022</div>
+            <div>
+              <h3>Quality Assurance Analyst</h3>
+              <p class="meta">CARMA · Full-Time</p>
+              <ul>
+                <li>Performed QA testing, defect tracking, software validation, and Excel-based reporting.</li>
+                <li>Collaborated with teams to validate fixes and improve testing procedures.</li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -283,58 +1104,97 @@
     <section id="publications">
       <div class="container">
         <div class="heading">
-          <span>Publications</span>
-          <h2>Research Work</h2>
+          <span>Research</span>
+          <h2>Publications & Research Work</h2>
         </div>
 
         <div class="two-col">
-          <article class="card">
-            <img src="Images/dsllm-transformer-architecture.png" alt="Domain-specific LLM architecture">
-            <h3>A Comparative Study on Domain-Specific LLMs: Architecture and Performance</h3>
-            <p class="meta">Accepted at NLPIR 2025 · Springer LNNS</p>
-            <p>
-              Comparative review of domain-specific large language models across architectures,
-              domains, and evaluation benchmarks.
-            </p>
-            <div class="pipeline"><span>LLMs</span><span>NLP Research</span><span>Transformer Architectures</span></div>
+          <article class="project-card">
+            <div class="project-media">
+              <img src="Images/dsllm-transformer-architecture.png" alt="Domain-specific LLM architecture" />
+            </div>
+            <div class="project-content">
+              <h3>A Comparative Study on Domain-Specific LLMs: Architecture and Performance</h3>
+              <p class="meta">Accepted at NLPIR 2025 · Springer LNNS</p>
+              <p>
+                Comparative review of domain-specific large language models across architectures,
+                domains, benchmarks, and evaluation methods.
+              </p>
+              <div class="hero-buttons">
+                <a class="btn primary" href="Images/dsllm-paper.pdf" target="_blank">View Manuscript</a>
+              </div>
+            </div>
           </article>
 
-          <article class="card">
-            <img src="Images/full.png" alt="HLFEval research framework">
-            <h3>HLFEval: Sentence-Level Evaluation of LLM Responses</h3>
-            <p class="meta">Ongoing Research · University of Windsor</p>
-            <p>
-              Ongoing research developing a transparent and adaptive multi-dimensional evaluation framework
-              for LLM-generated text.
-            </p>
-            <div class="pipeline"><span>LLM Evaluation</span><span>Safety</span><span>Factuality</span></div>
+          <article class="project-card">
+            <div class="project-media">
+              <img src="Images/nlpir-certificate.png" alt="NLPIR conference certificate" />
+            </div>
+            <div class="project-content">
+              <h3>Conference Presentation Recognition</h3>
+              <p class="meta">NLPIR 2025 · Kyushu University, Fukuoka, Japan</p>
+              <p>
+                Presented research connected to domain-specific LLMs and accepted work for Springer LNNS.
+              </p>
+              <div class="hero-buttons">
+                <a class="btn primary" href="Images/nlpir-certificate.pdf" target="_blank">View Certificate</a>
+              </div>
+            </div>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="contact">
-      <div class="container contact">
+    <section id="education">
+      <div class="container">
         <div class="heading">
-          <span>Contact</span>
-          <h2>Let’s connect</h2>
+          <span>Education</span>
+          <h2>Academic Background</h2>
         </div>
-        <p>
-          I am open to opportunities in AI evaluation, machine learning, NLP, QA testing,
-          data analytics, computer vision, and applied AI research.
-        </p>
-        <br>
-        <div class="hero-buttons" style="justify-content:center;">
-          <a class="btn primary" href="mailto:Nehmehaidura@gmail.com">Email Me</a>
-          <a class="btn" href="https://www.linkedin.com/in/nehme-haidura" target="_blank">LinkedIn</a>
-          <a class="btn" href="https://github.com/nehme-haidura" target="_blank">GitHub</a>
+
+        <div class="two-col">
+          <div class="glass">
+            <h3>Master of Science in Computer Science, Artificial Intelligence Stream</h3>
+            <p class="meta">University of Windsor · May 2025 - Aug 2026</p>
+            <p>Graduate studies focused on AI, machine learning, NLP, data-driven systems, and LLM evaluation.</p>
+          </div>
+
+          <div class="glass">
+            <h3>Bachelor’s Degree in Computer Science</h3>
+            <p class="meta">Lebanese International University · 2017 - 2020</p>
+            <p>Coursework in software development, programming, databases, operating systems, and web technologies.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact-box">
+          <div class="heading" style="margin-bottom: 22px;">
+            <span>Contact</span>
+            <h2>Let’s connect</h2>
+          </div>
+
+          <p>
+            I am open to opportunities in AI evaluation, machine learning, NLP,
+            QA testing, data analytics, computer vision, graph learning, and applied AI research.
+          </p>
+
+          <div class="hero-buttons" style="justify-content:center;">
+            <a class="btn primary" href="mailto:Nehmehaidura@gmail.com">Email Me</a>
+            <a class="btn" href="https://www.linkedin.com/in/nehme-haidura" target="_blank">LinkedIn</a>
+            <a class="btn" href="https://github.com/nehme-haidura" target="_blank">GitHub</a>
+          </div>
         </div>
       </div>
     </section>
   </main>
 
   <footer>
-    © 2026 Nehme Haidura
+    <div class="container">
+      © 2026 Nehme Haidura · AI & Machine Learning Portfolio
+    </div>
   </footer>
 </body>
 </html>
