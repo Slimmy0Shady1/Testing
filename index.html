@@ -7,6 +7,11 @@
   <title>Nehme Haidura | AI & Machine Learning Portfolio</title>
   <meta name="description" content="Portfolio of Nehme Haidura, AI and Machine Learning researcher focused on LLM evaluation, NLP, prompt engineering, computer vision, graph learning, and data analytics." />
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
   <style>
     * {
       margin: 0;
@@ -722,6 +727,250 @@
         padding: 20px;
       }
     }
+
+
+    /* ================= SCREENSHOT-MATCH HERO + FEATURED PROJECTS ================= */
+    :root {
+      --bg: #030712;
+      --bg2: #020617;
+      --blue: #2f7bff;
+      --blue-light: #6aa8ff;
+      --purple: #9b5cff;
+      --pink: #ff64b4;
+      --orange: #f59e42;
+      --green: #42e6a4;
+      --text: #f8fafc;
+      --muted: #d1d5db;
+      --soft: #9ca3af;
+      --border: rgba(148, 163, 184, 0.22);
+      --card: rgba(15, 23, 42, 0.78);
+      --shadow: 0 26px 70px rgba(0,0,0,.45);
+    }
+
+    body {
+      font-family: Inter, Arial, sans-serif;
+      background:
+        radial-gradient(circle at 78% 50%, rgba(88, 28, 135, 0.28), transparent 30%),
+        radial-gradient(circle at 58% 34%, rgba(37, 99, 235, 0.18), transparent 30%),
+        linear-gradient(180deg, #020617 0%, #030712 55%, #020617 100%);
+      color: var(--text);
+    }
+
+    .container { width: min(1480px, 94%); }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(2, 6, 23, 0.58);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.06);
+      backdrop-filter: blur(16px);
+    }
+
+    .nav-inner { height: 76px; }
+
+    .logo { gap: 20px; font-size: 1.55rem; letter-spacing: -0.8px; }
+
+    .logo-mark {
+      width: auto;
+      height: auto;
+      border: 0;
+      border-radius: 0;
+      background: none;
+      box-shadow: none;
+      display: flex;
+      align-items: center;
+      font-size: 2rem;
+      font-weight: 900;
+      letter-spacing: -5px;
+      line-height: 1;
+    }
+
+    .logo-mark .n { color: #ffffff; text-shadow: 0 0 18px rgba(255,255,255,.18); }
+    .logo-mark .h { color: var(--blue); text-shadow: 0 0 22px rgba(47,123,255,.5); }
+
+    .nav-links { align-items: center; gap: 44px; color: white; font-size: 1rem; }
+    .nav-links a:first-child { color: var(--blue-light); }
+    .nav-links a:hover { color: var(--blue-light); transform: translateY(-1px); }
+    .moon-toggle { font-size: 1.15rem; color: white; opacity: .95; }
+
+    .hero {
+      min-height: 100vh;
+      padding: 118px 0 28px;
+      overflow: hidden;
+      border-top: 0;
+    }
+
+    .hero::before {
+      background-image:
+        radial-gradient(circle, rgba(37,99,235,.40) 1px, transparent 1.8px),
+        linear-gradient(rgba(37,99,235,.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(37,99,235,.04) 1px, transparent 1px);
+      background-size: 62px 62px, 90px 90px, 90px 90px;
+      mask-image: linear-gradient(to right, transparent 2%, black 35%, black 85%, transparent 100%);
+      opacity: .55;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      height: 210px;
+      background:
+        radial-gradient(ellipse at 72% 20%, rgba(147, 51, 234, 0.34), transparent 34%),
+        radial-gradient(ellipse at 58% 35%, rgba(37, 99, 235, 0.30), transparent 42%);
+      filter: blur(10px);
+      opacity: .8;
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      grid-template-columns: .78fr 1.22fr;
+      gap: 34px;
+      min-height: 520px;
+    }
+
+    .hero-badge {
+      padding: 9px 18px;
+      margin-bottom: 28px;
+      background: rgba(30, 93, 233, .26);
+      border: 1px solid rgba(71, 128, 255, .24);
+      color: #8dbbff;
+      box-shadow: inset 0 0 18px rgba(47,123,255,.12);
+      letter-spacing: .6px;
+    }
+
+    .dot { width: 8px; height: 8px; background: var(--blue); }
+
+    .hero h1 {
+      font-size: clamp(4.2rem, 5.7vw, 6rem);
+      line-height: .98;
+      letter-spacing: -4.5px;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 span {
+      display: inline-block;
+      background: linear-gradient(180deg, #60a5fa 0%, #2563eb 58%, #1d4ed8 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: none;
+    }
+
+    .hero-subtitle { font-size: 1.05rem; margin-bottom: 12px; }
+    .hero-description { max-width: 575px; font-size: 1.05rem; line-height: 1.55; color: #d1d5db; }
+
+    .btn {
+      min-width: 168px;
+      height: 48px;
+      gap: 10px;
+      border-radius: 8px;
+      background: rgba(2,6,23,.32);
+      border: 1px solid rgba(148,163,184,.34);
+      box-shadow: none;
+    }
+
+    .btn.primary { background: #1266f1; border: 1px solid #1266f1; box-shadow: 0 18px 40px rgba(18,102,241,.28); }
+    .btn:hover { transform: translateY(-2px); }
+
+    .hero-visual {
+      min-height: 520px;
+      justify-content: flex-end;
+      isolation: isolate;
+    }
+
+    .hero-visual::before {
+      width: 100%; height: 100%; border-radius: 0;
+      background:
+        linear-gradient(90deg, rgba(3,7,18,0.25) 0%, transparent 24%, transparent 78%, rgba(3,7,18,.25) 100%),
+        url("https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=1600&auto=format&fit=crop");
+      background-size: cover;
+      background-position: center;
+      filter: saturate(1.25) contrast(1.1);
+      opacity: .98;
+      mix-blend-mode: screen;
+    }
+
+    .hero-visual img { display: none; }
+
+    .floating-icon {
+      position: absolute;
+      z-index: 3;
+      color: #b8d7ff;
+      opacity: .9;
+      font-size: 2.05rem;
+      filter: drop-shadow(0 0 15px rgba(37,99,235,.55));
+    }
+    .fi-chat { left: 20%; top: 17%; }
+    .fi-node { right: 17%; top: 12%; font-size: 2.6rem; }
+    .fi-chart { right: 8%; top: 36%; }
+    .fi-code { right: 22%; bottom: 20%; }
+    .fi-brain { left: 22%; bottom: 29%; font-size: 2.7rem; color: #7ab2ff; }
+
+    .hero-projects { margin-top: 8px; }
+
+    .line-title { gap: 24px; margin-bottom: 4px; }
+    .line-title::before, .line-title::after { background: linear-gradient(90deg, transparent, rgba(148,163,184,.48), transparent); }
+    .line-title h2 { font-size: 1.7rem; display: flex; align-items: center; gap: 14px; }
+    .line-title h2::before { content: "\f0b1"; font-family: "Font Awesome 6 Free"; font-weight: 900; color: var(--blue); font-size: 1.6rem; }
+    .featured-subtitle { text-align: center; color: #c7cdd7; margin-bottom: 18px; font-size: .98rem; }
+
+    .featured-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px; }
+
+    .mini-card {
+      min-height: 288px;
+      padding: 22px 24px 16px;
+      border-radius: 10px;
+      background: linear-gradient(180deg, rgba(15,23,42,.84), rgba(7,13,28,.92));
+      border: 1px solid rgba(100,116,139,.34);
+      box-shadow: inset 0 0 40px rgba(37,99,235,.06), 0 18px 38px rgba(0,0,0,.24);
+    }
+
+    .mini-card h3 { font-size: 1.08rem; margin-top: 2px; }
+    .mini-card p { font-size: .86rem; color: #d8dee9; min-height: 62px; }
+    .mini-card::before { background: linear-gradient(135deg, rgba(47,123,255,.16), transparent 40%, rgba(168,85,247,.12)); }
+
+    .project-icon {
+      width: 56px; height: 56px; margin-bottom: 12px;
+      background: none; border: 0; box-shadow: none; border-radius: 0;
+      font-size: 3rem;
+    }
+    .project-icon i { filter: drop-shadow(0 0 13px currentColor); }
+    .icon-purple { color: #8b5cf6; }
+    .icon-green { color: #4ade80; }
+    .icon-blue { color: #6591ff; }
+    .icon-orange { color: #f59e42; }
+    .icon-pink { color: #ff64b4; }
+    .project-icon svg { display: none; }
+
+    .tags { margin-top: 10px; gap: 7px; }
+    .tag { border: 0; font-size: .68rem; padding: 4px 10px; }
+    .tag.purple { color:#d8c7ff; background:rgba(139,92,246,.20); }
+    .tag.green { color:#a7f3d0; background:rgba(16,185,129,.18); }
+    .tag.blue { color:#93c5fd; background:rgba(37,99,235,.20); }
+    .tag.orange { color:#fdba74; background:rgba(245,158,66,.18); }
+    .tag.pink { color:#f9a8d4; background:rgba(236,72,153,.18); }
+
+    .card-actions { display: grid; grid-template-columns: 1fr 58px; gap: 14px; margin-top: 16px; position: relative; z-index: 2; }
+    .card-btn { height: 42px; border-radius: 7px; display: grid; place-items: center; border: 1px solid rgba(148,163,184,.32); background: rgba(2,6,23,.26); font-weight: 800; font-size: .92rem; }
+    .card-btn:hover { border-color: rgba(96,165,250,.72); color: #fff; }
+
+    @media (max-width: 1200px) { .featured-grid { grid-template-columns: repeat(3,1fr); } }
+    @media (max-width: 1050px) {
+      nav { position: sticky; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-visual { min-height: 430px; justify-content: center; }
+    }
+    @media (max-width: 760px) {
+      .logo { font-size: 1.18rem; gap: 12px; }
+      .logo-mark { font-size: 1.6rem; }
+      .hero { padding-top: 70px; }
+      .hero h1 { font-size: 4rem; }
+      .featured-grid { grid-template-columns: 1fr; }
+    }
+
   </style>
 </head>
 
@@ -737,9 +986,11 @@
         <a href="#top">Home</a>
         <a href="#about">About</a>
         <a href="#projects">Projects</a>
-        <a href="#experience">Experience</a>
-        <a href="#publications">Research</a>
+        <a href="#projects">Projects</a>
+        <a href="#publications">Publications</a>
+        <a href="Nehme_Haidura_Resume.pdf" target="_blank">Resume</a>
         <a href="#contact">Contact</a>
+        <span class="moon-toggle"><i class="fa-solid fa-moon"></i></span>
       </div>
     </div>
   </nav>
@@ -769,17 +1020,18 @@
           </p>
 
           <div class="hero-buttons">
-            <a class="btn primary" href="Nehme_Haidura_Resume.pdf" target="_blank">Download Resume</a>
-            <a class="btn" href="#projects">View Projects</a>
-            <a class="btn" href="#contact">Contact Me</a>
+            <a class="btn primary" href="Nehme_Haidura_Resume.pdf" target="_blank"><i class="fa-solid fa-download"></i> Download Resume</a>
+            <a class="btn" href="#contact"><i class="fa-regular fa-comment"></i> Contact Me</a>
           </div>
         </div>
 
-        <div class="hero-visual">
-          <img
-            src="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=1600&auto=format&fit=crop"
-            alt="AI brain digital network"
-          />
+        <div class="hero-visual" aria-label="AI brain digital network illustration">
+          <span class="floating-icon fi-chat"><i class="fa-regular fa-message"></i></span>
+          <span class="floating-icon fi-node"><i class="fa-solid fa-network-wired"></i></span>
+          <span class="floating-icon fi-chart"><i class="fa-solid fa-chart-simple"></i></span>
+          <span class="floating-icon fi-code"><i class="fa-solid fa-code"></i></span>
+          <span class="floating-icon fi-brain"><i class="fa-solid fa-atom"></i></span>
+          <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=1600&auto=format&fit=crop" alt="AI brain digital network" />
         </div>
       </div>
 
@@ -787,71 +1039,67 @@
         <div class="line-title">
           <h2>Featured Projects</h2>
         </div>
+        <p class="featured-subtitle">A selection of my recent research and technical projects</p>
 
         <div class="featured-grid">
           <a class="mini-card" href="#hlfeval">
-            <div class="project-icon">
-              <svg viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 10-13h-7l0-7z"/></svg>
-            </div>
+            <div class="project-icon icon-purple"><i class="fa-solid fa-brain"></i></div>
             <h3>HLFEval</h3>
-            <p>Hybrid LLM evaluation framework for semantic relevance, fluency, safety, and factuality.</p>
+            <p>Comprehensive NLP evaluation framework for LLMs with automated testing, metrics, and reporting.</p>
             <div class="tags">
-              <span class="tag">Python</span>
-              <span class="tag">NLP</span>
-              <span class="tag">LLM Evaluation</span>
+              <span class="tag purple">Python</span>
+              <span class="tag purple">NLP</span>
+              <span class="tag purple">LLM Evaluation</span>
             </div>
+            <div class="card-actions"><span class="card-btn">View Project</span><span class="card-btn"><i class="fa-brands fa-github"></i></span></div>
           </a>
 
           <a class="mini-card" href="#representation">
-            <div class="project-icon">
-              <svg viewBox="0 0 24 24"><path d="M9 3a4 4 0 0 0-4 4v1a4 4 0 0 0 0 8v1a4 4 0 0 0 4 4"/><path d="M15 3a4 4 0 0 1 4 4v1a4 4 0 0 1 0 8v1a4 4 0 0 1-4 4"/><path d="M9 7h6M9 12h6M9 17h6"/></svg>
-            </div>
+            <div class="project-icon icon-green"><i class="fa-regular fa-comment-dots"></i></div>
             <h3>Representation Learning</h3>
-            <p>Clustering and manifold analysis using nonlinear datasets and graph-based similarity methods.</p>
+            <p>Research on abstractive summarization using autoencoders and semantic representation learning techniques.</p>
             <div class="tags">
-              <span class="tag">Scikit-learn</span>
-              <span class="tag">ML</span>
-              <span class="tag">Clustering</span>
+              <span class="tag green">PyTorch</span>
+              <span class="tag green">NLP</span>
+              <span class="tag green">Autoencoders</span>
             </div>
+            <div class="card-actions"><span class="card-btn">View Project</span><span class="card-btn"><i class="fa-brands fa-github"></i></span></div>
           </a>
 
           <a class="mini-card" href="#stereo">
-            <div class="project-icon">
-              <svg viewBox="0 0 24 24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>
-            </div>
+            <div class="project-icon icon-blue"><i class="fa-regular fa-eye"></i></div>
             <h3>Stereo Vision</h3>
-            <p>3D reconstruction using OpenCV, SIFT, FLANN, StereoSGBM, and point clouds.</p>
+            <p>Depth estimation from stereo images using deep learning and computer vision techniques.</p>
             <div class="tags">
-              <span class="tag">OpenCV</span>
-              <span class="tag">3D</span>
-              <span class="tag">Vision</span>
+              <span class="tag blue">Python</span>
+              <span class="tag blue">OpenCV</span>
+              <span class="tag blue">Deep Learning</span>
             </div>
+            <div class="card-actions"><span class="card-btn">View Project</span><span class="card-btn"><i class="fa-brands fa-github"></i></span></div>
           </a>
 
           <a class="mini-card" href="#hgnn">
-            <div class="project-icon">
-              <svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="3"/><circle cx="19" cy="5" r="3"/><circle cx="19" cy="19" r="3"/><path d="M8 11l8-5M8 13l8 5M19 8v8"/></svg>
-            </div>
+            <div class="project-icon icon-orange"><i class="fa-solid fa-code-branch"></i></div>
             <h3>HGNN</h3>
-            <p>Topology-aware hypergraph construction for neural network learning and classification.</p>
+            <p>Heterogeneous Graph Neural Network for document classification and information retrieval.</p>
             <div class="tags">
-              <span class="tag">PyTorch</span>
-              <span class="tag">GNN</span>
-              <span class="tag">DOSAGE</span>
+              <span class="tag orange">PyTorch</span>
+              <span class="tag orange">GNN</span>
+              <span class="tag orange">NLP</span>
             </div>
+            <div class="card-actions"><span class="card-btn">View Project</span><span class="card-btn"><i class="fa-brands fa-github"></i></span></div>
           </a>
 
           <a class="mini-card" href="#breast-cancer">
-            <div class="project-icon">
-              <svg viewBox="0 0 24 24"><path d="M4 19V5"/><path d="M4 19h16"/><path d="M8 16v-5"/><path d="M12 16V8"/><path d="M16 16v-9"/><path d="M20 16v-3"/></svg>
-            </div>
+            <div class="project-icon icon-pink"><i class="fa-solid fa-chart-column"></i></div>
             <h3>Breast Cancer ML</h3>
-            <p>Healthcare AI classification pipeline using SMOTE, Random Forest, and SVM models.</p>
+            <p>Comparative analysis of ML algorithms for breast cancer classification and performance evaluation.</p>
             <div class="tags">
-              <span class="tag">Healthcare AI</span>
-              <span class="tag">ML</span>
-              <span class="tag">Analytics</span>
+              <span class="tag pink">Python</span>
+              <span class="tag pink">Scikit-learn</span>
+              <span class="tag pink">ML</span>
             </div>
+            <div class="card-actions"><span class="card-btn">View Project</span><span class="card-btn"><i class="fa-brands fa-github"></i></span></div>
           </a>
         </div>
       </div>
