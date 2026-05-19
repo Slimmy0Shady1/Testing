@@ -3,216 +3,338 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Nehme Haidura | AI & Machine Learning Portfolio</title>
-  <meta name="description" content="Portfolio of Nehme Haidura, AI and Machine Learning researcher focused on LLM evaluation, NLP, machine learning, computer vision, graph learning, and data analytics." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:Inter,Arial,sans-serif;background:#020617;color:#fff;line-height:1.6}
+    a{text-decoration:none;color:inherit}
+    .container{width:min(1200px,92%);margin:auto}
+
+    nav{position:sticky;top:0;z-index:99;background:rgba(2,6,23,.88);backdrop-filter:blur(16px);border-bottom:1px solid rgba(148,163,184,.15)}
+    .nav-inner{height:72px;display:flex;align-items:center;justify-content:space-between}
+    .logo{display:flex;align-items:center;gap:14px;font-size:1.35rem;font-weight:800}
+    .logo-mark{font-size:1.7rem;font-weight:900;color:#2563eb}
+    .logo-mark span{color:#fff}
+    .nav-links{display:flex;gap:34px;color:#e5e7eb;font-size:.98rem}
+    .nav-links a:hover,.nav-links a.active{color:#3b82f6}
+
+    .hero{position:relative;min-height:720px;padding:95px 0 40px;overflow:hidden;background:#020617}
+    .hero::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 75% 35%,rgba(37,99,235,.35),transparent 38%),radial-gradient(circle at 90% 80%,rgba(147,51,234,.22),transparent 35%)}
+    .hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:.9fr 1.1fr;align-items:center;gap:35px}
+    .badge{display:inline-flex;align-items:center;gap:10px;background:rgba(37,99,235,.25);color:#93c5fd;border-radius:999px;padding:10px 20px;font-size:.9rem;letter-spacing:.4px;margin-bottom:25px}
+    .badge::before{content:"";width:9px;height:9px;border-radius:50%;background:#3b82f6}
+    h1{font-size:clamp(3.5rem,7vw,6.2rem);line-height:.92;letter-spacing:-4px;margin-bottom:20px}
+    h1 span{display:block;color:#2563eb}
+    .subtitle{font-size:1.15rem;font-weight:700;margin-bottom:16px}
+    .hero p{color:#cbd5e1;font-size:1.05rem;max-width:540px;margin-bottom:28px}
+    .hero-buttons{display:flex;gap:14px;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:14px 24px;border-radius:10px;font-weight:700;border:1px solid rgba(148,163,184,.35);transition:.25s}
+    .btn.primary{background:#2563eb;border-color:#2563eb}
+    .btn:hover{transform:translateY(-2px);background:#1d4ed8}
+
+    .hero-visual img{width:100%;max-width:760px;display:block;filter:drop-shadow(0 0 35px rgba(37,99,235,.45))}
+    .section-title{display:flex;align-items:center;justify-content:center;gap:22px;text-align:center;margin:40px 0 24px}
+    .section-title::before,.section-title::after{content:"";height:1px;background:rgba(148,163,184,.35);flex:1}
+    .section-title h2{font-size:1.8rem}
+    .section-sub{text-align:center;color:#cbd5e1;margin-bottom:24px}
+
+    .featured-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:18px}
+    .mini-card{background:linear-gradient(180deg,rgba(15,23,42,.95),rgba(2,6,23,.95));border:1px solid rgba(148,163,184,.22);border-radius:14px;padding:24px 18px;text-align:center;min-height:240px;transition:.25s}
+    .mini-card:hover{transform:translateY(-6px);border-color:#2563eb}
+    .icon{font-size:2.4rem;margin-bottom:14px}
+    .mini-card h3{font-size:1.05rem;margin-bottom:10px}
+    .mini-card p{font-size:.9rem;color:#cbd5e1;margin-bottom:14px}
+    .tags{display:flex;justify-content:center;flex-wrap:wrap;gap:7px;margin-top:12px}
+    .tag{font-size:.72rem;padding:5px 9px;border-radius:999px;background:rgba(37,99,235,.18);color:#bfdbfe}
+    section{padding:85px 0;border-top:1px solid rgba(148,163,184,.12)}
+    .heading{text-align:center;margin-bottom:35px}
+    .heading span{color:#3b82f6;font-weight:800;text-transform:uppercase;font-size:.8rem;letter-spacing:1.5px}
+    .heading h2{font-size:2.4rem;margin-top:7px}
+
+    .projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+    .card{background:rgba(15,23,42,.9);border:1px solid rgba(148,163,184,.22);border-radius:18px;padding:24px;box-shadow:0 20px 40px rgba(0,0,0,.22)}
+    .card.featured{grid-column:span 2}
+    .card img{width:100%;max-height:360px;object-fit:contain;border-radius:14px;background:#020617;border:1px solid rgba(255,255,255,.08);margin-bottom:18px}
+    .card h3{font-size:1.45rem;margin-bottom:8px}
+    .meta{color:#60a5fa;font-weight:700;margin-bottom:12px}
+    .card p{color:#cbd5e1;margin-bottom:12px}
+    .pipeline{display:flex;flex-wrap:wrap;gap:9px;margin-top:18px}
+    .pipeline span{font-size:.78rem;padding:7px 11px;border-radius:999px;background:rgba(59,130,246,.14);color:#bfdbfe;border:1px solid rgba(59,130,246,.22)}
+    .image-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px}
+    .image-grid .card{padding:14px}
+    .image-grid img{height:200px}
+    .two-col{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+    .contact{text-align:center;max-width:850px;margin:auto}
+    footer{text-align:center;color:#94a3b8;padding:28px;border-top:1px solid rgba(148,163,184,.15)}
+
+    @media(max-width:1050px){
+      .hero-grid,.projects-grid,.two-col{grid-template-columns:1fr}
+      .card.featured{grid-column:span 1}
+      .featured-grid{grid-template-columns:repeat(2,1fr)}
+      .hero{text-align:center}
+      .hero p{margin-left:auto;margin-right:auto}
+      .hero-buttons{justify-content:center}
+    }
+    @media(max-width:700px){
+      .nav-links{display:none}
+      .featured-grid,.image-grid{grid-template-columns:1fr}
+      h1{font-size:3.5rem}
+    }
+  </style>
 </head>
+
 <body>
-  <header class="site-header">
-    <nav class="nav container">
-      <a class="brand" href="#home" aria-label="Nehme Haidura home">
-        <span class="brand-mark"><span>N</span><span>H</span></span>
-        <span class="brand-name">Nehme Haidura</span>
-      </a>
-
-      <button class="menu-toggle" aria-label="Open menu" onclick="document.body.classList.toggle('menu-open')">
-        <span></span><span></span><span></span>
-      </button>
-
+  <nav>
+    <div class="container nav-inner">
+      <a class="logo" href="#top"><span class="logo-mark">N<span>H</span></span> Nehme Haidura</a>
       <div class="nav-links">
-        <a class="active" href="#home">Home</a>
+        <a class="active" href="#top">Home</a>
         <a href="#about">About</a>
         <a href="#projects">Projects</a>
         <a href="#publications">Publications</a>
-        <a href="Nehme_Haidura_Resume.pdf" target="_blank" rel="noopener">Resume</a>
+        <a href="Nehme_Haidura_Resume.pdf" target="_blank">Resume</a>
         <a href="#contact">Contact</a>
-        <button class="theme-dot" aria-label="Theme icon">◐</button>
       </div>
-    </nav>
-  </header>
+    </div>
+  </nav>
 
-  <main id="home">
+  <main id="top">
     <section class="hero">
-      <div class="hero-bg-glow"></div>
       <div class="container hero-grid">
-        <div class="hero-copy">
-          <div class="eyebrow"><span></span> AI &amp; MACHINE LEARNING RESEARCHER</div>
-          <h1>Nehme<br><strong>Haidura</strong></h1>
-          <p class="hero-kicker">AI Evaluation • NLP Research • Machine Learning • Computer Vision</p>
-          <p class="hero-text">
+        <div>
+          <div class="badge">AI & MACHINE LEARNING RESEARCHER</div>
+          <h1>Nehme <span>Haidura</span></h1>
+          <div class="subtitle">AI Evaluation • NLP Research • Machine Learning • Computer Vision</div>
+          <p>
             Graduate student at the University of Windsor specializing in AI evaluation frameworks,
-            large language model assessment, NLP research, and intelligent systems. Passionate about
-            building reliable AI systems and solving real-world problems through research and engineering.
+            large language model assessment, NLP research, and intelligent systems.
           </p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="Nehme_Haidura_Resume.pdf" target="_blank" rel="noopener">
-              <span>↓</span> Download Resume
-            </a>
-            <a class="btn btn-secondary" href="#contact"><span>○</span> Contact Me</a>
+          <div class="hero-buttons">
+            <a class="btn primary" href="Nehme_Haidura_Resume.pdf" target="_blank">Download Resume</a>
+            <a class="btn" href="#contact">Contact Me</a>
           </div>
         </div>
 
-        <div class="hero-art" aria-label="AI brain illustration">
-          <!-- Put your AI/brain image in: images/ai-brain.png -->
-          <img src="images/ai-brain.png" alt="AI brain network illustration" onerror="this.style.display='none'; document.querySelector('.brain-fallback').style.display='block';" />
-          <div class="brain-fallback" aria-hidden="true">
-            <div class="brain-shape"></div>
-          </div>
-          <div class="floating-icon icon-1">▦</div>
-          <div class="floating-icon icon-2">⌬</div>
-          <div class="floating-icon icon-3">▥</div>
-          <div class="floating-icon icon-4">&lt;/&gt;</div>
+        <div class="hero-visual">
+          <img src="images/hero-brain.png" alt="AI brain network graphic">
         </div>
       </div>
-    </section>
 
-    <section class="featured" id="projects">
       <div class="container">
-        <div class="section-heading compact">
-          <span class="line"></span>
-          <div>
-            <h2><span class="briefcase">▣</span> Featured Projects</h2>
-            <p>A selection of my recent research and technical projects</p>
-          </div>
-          <span class="line"></span>
+        <div class="section-title">
+          <h2>Featured Projects</h2>
         </div>
+        <p class="section-sub">A selection of my recent research and technical projects</p>
 
-        <div class="project-grid five">
-          <article class="project-card purple">
-            <div class="project-icon">☑</div>
+        <div class="featured-grid">
+          <a class="mini-card" href="#hlfeval">
+            <div class="icon">🧠</div>
             <h3>HLFEval</h3>
             <p>Comprehensive NLP evaluation framework for LLMs with automated testing, metrics, and reporting.</p>
-            <div class="tags"><span>Python</span><span>NLP</span><span>LLM Evaluation</span></div>
-            <div class="card-actions"><a href="#hlfeval">View Project</a><a href="https://github.com/nehme-haidura" target="_blank" rel="noopener">GitHub</a></div>
-          </article>
+            <div class="tags"><span class="tag">Python</span><span class="tag">NLP</span><span class="tag">LLM Evaluation</span></div>
+          </a>
 
-          <article class="project-card green">
-            <div class="project-icon">☰</div>
+          <a class="mini-card" href="#representation">
+            <div class="icon">💬</div>
             <h3>Representation Learning</h3>
-            <p>Research on abstractive summarization using autoencoders and semantic representation learning techniques.</p>
-            <div class="tags"><span>PyTorch</span><span>NLP</span><span>Autoencoders</span></div>
-            <div class="card-actions"><a href="#representation">View Project</a><a href="https://github.com/nehme-haidura" target="_blank" rel="noopener">GitHub</a></div>
-          </article>
+            <p>Research on clustering and semantic representation learning techniques.</p>
+            <div class="tags"><span class="tag">PyTorch</span><span class="tag">NLP</span><span class="tag">Autoencoders</span></div>
+          </a>
 
-          <article class="project-card blue">
-            <div class="project-icon">◉</div>
+          <a class="mini-card" href="#stereo">
+            <div class="icon">👁️</div>
             <h3>Stereo Vision</h3>
-            <p>Depth estimation from stereo images using deep learning and computer vision techniques.</p>
-            <div class="tags"><span>Python</span><span>OpenCV</span><span>Deep Learning</span></div>
-            <div class="card-actions"><a href="#stereo">View Project</a><a href="https://github.com/nehme-haidura" target="_blank" rel="noopener">GitHub</a></div>
-          </article>
+            <p>Depth estimation from stereo images using computer vision techniques.</p>
+            <div class="tags"><span class="tag">Python</span><span class="tag">OpenCV</span><span class="tag">Deep Learning</span></div>
+          </a>
 
-          <article class="project-card orange">
-            <div class="project-icon">⌬</div>
+          <a class="mini-card" href="#hgnn">
+            <div class="icon">🔗</div>
             <h3>HGNN</h3>
-            <p>Heterogeneous Graph Neural Network for document classification and information retrieval.</p>
-            <div class="tags"><span>PyTorch</span><span>GNN</span><span>NLP</span></div>
-            <div class="card-actions"><a href="#hgnn">View Project</a><a href="https://github.com/nehme-haidura" target="_blank" rel="noopener">GitHub</a></div>
-          </article>
+            <p>Hypergraph Neural Network research for document classification and information retrieval.</p>
+            <div class="tags"><span class="tag">PyTorch</span><span class="tag">GNN</span><span class="tag">NLP</span></div>
+          </a>
 
-          <article class="project-card pink">
-            <div class="project-icon">▥</div>
+          <a class="mini-card" href="#breast-cancer">
+            <div class="icon">📊</div>
             <h3>Breast Cancer ML</h3>
-            <p>Comparative analysis of ML algorithms for breast cancer classification and performance evaluation.</p>
-            <div class="tags"><span>Python</span><span>Scikit-learn</span><span>ML</span></div>
-            <div class="card-actions"><a href="#breast-cancer">View Project</a><a href="https://github.com/nehme-haidura" target="_blank" rel="noopener">GitHub</a></div>
-          </article>
+            <p>Comparative analysis of ML algorithms for breast cancer classification.</p>
+            <div class="tags"><span class="tag">Python</span><span class="tag">Scikit-learn</span><span class="tag">ML</span></div>
+          </a>
         </div>
       </div>
     </section>
 
-    <section class="section" id="about">
-      <div class="container two-col">
-        <div class="section-title left">
+    <section id="about">
+      <div class="container">
+        <div class="heading">
           <span>About</span>
-          <h2>Building reliable AI systems through research and engineering.</h2>
+          <h2>Building reliable AI systems through research and evaluation</h2>
         </div>
-        <div class="glass-panel">
+        <div class="card">
           <p>
             I am a Computer Science graduate researcher focused on applied AI, LLM evaluation,
-            natural language processing, machine learning, computer vision, graph learning, software quality assurance,
-            and data analytics. My work combines research, implementation, and evaluation to build reliable AI and software systems.
+            NLP, computer vision, graph learning, software quality assurance, and data analytics.
+            My work combines implementation, testing, and evaluation to build interpretable and reliable AI systems.
           </p>
         </div>
       </div>
     </section>
 
-    <section class="section alt" id="all-projects">
+    <section id="projects">
       <div class="container">
-        <div class="section-title">
+        <div class="heading">
           <span>Projects</span>
-          <h2>Project Details</h2>
+          <h2>Technical Projects</h2>
         </div>
 
-        <div class="detail-grid">
-          <article class="detail-card" id="hlfeval">
-            <h3>HLFEval: Hybrid LLM-Based Evaluation Framework</h3>
-            <p>Multi-dimensional sentence-level evaluation across semantic relevance, fluency, safety, and factuality with learned metric weighting.</p>
-            <div class="mini-tags"><span>LLM Evaluation</span><span>NLP</span><span>Python</span><span>Factuality</span></div>
+        <div class="projects-grid">
+          <article class="card featured" id="hlfeval">
+            <img src="images/full.png" alt="HLFEval full framework">
+            <h3>HLFEval: Hybrid LLM-Based Framework for Sentence-Level Evaluation</h3>
+            <p class="meta">2025 - Present</p>
+            <p>
+              Developed a hybrid framework for evaluating LLM-generated responses across semantic relevance,
+              fluency, safety, and factuality. The framework combines metric computation, LLM-as-a-Judge,
+              and learned weighting into one composite score.
+            </p>
+
+            <div class="image-grid">
+              <div class="card">
+                <img src="images/New_A.png" alt="HLFEval Block A">
+                <p><strong>Block A:</strong> Data preprocessing and input construction.</p>
+              </div>
+              <div class="card">
+                <img src="images/New_B.png" alt="HLFEval Block B">
+                <p><strong>Block B:</strong> Metric computation for quality dimensions.</p>
+              </div>
+              <div class="card">
+                <img src="images/New_C.png" alt="HLFEval Block C">
+                <p><strong>Block C:</strong> Weight learning and final score generation.</p>
+              </div>
+            </div>
+
+            <div class="pipeline">
+              <span>LLM Evaluation</span><span>NLP</span><span>Semantic Relevance</span><span>Fluency</span><span>Safety</span><span>Factuality</span>
+            </div>
           </article>
-          <article class="detail-card" id="representation">
-            <h3>Representation Learning</h3>
-            <p>Spectral clustering, manifold-based analysis, and semantic representation learning experiments for nonlinear data structure discovery.</p>
-            <div class="mini-tags"><span>PyTorch</span><span>Clustering</span><span>Representation Learning</span></div>
+
+          <article class="card" id="representation">
+            <img src="images/spectral-clustering-comparison.png" alt="Representation learning project">
+            <h3>Representation Learning: Spectral Clustering and Manifold Analysis</h3>
+            <p class="meta">2025</p>
+            <p>
+              Evaluated clustering methods on nonlinear datasets and compared K-Means with Spectral Clustering
+              to analyze graph-based similarity and representation learning.
+            </p>
+            <div class="pipeline"><span>Spectral Clustering</span><span>K-Means</span><span>Scikit-learn</span></div>
           </article>
-          <article class="detail-card" id="stereo">
-            <h3>Stereo Vision and 3D Scene Reconstruction</h3>
-            <p>OpenCV-based pipeline using SIFT, FLANN, epipolar geometry, disparity estimation, StereoSGBM, and 3D point cloud reconstruction.</p>
-            <div class="mini-tags"><span>OpenCV</span><span>SIFT</span><span>3D Reconstruction</span></div>
+
+          <article class="card" id="stereo">
+            <img src="images/point-cloud-3d.png" alt="Stereo vision 3D reconstruction">
+            <h3>Stereo Vision and 3D Scene Reconstruction using OpenCV</h3>
+            <p class="meta">2025</p>
+            <p>
+              Developed a stereo vision pipeline using OpenCV, SIFT, FLANN, epipolar geometry,
+              disparity maps, StereoSGBM, and 3D point cloud reconstruction.
+            </p>
+            <div class="pipeline"><span>OpenCV</span><span>SIFT</span><span>FLANN</span><span>3D Reconstruction</span></div>
           </article>
-          <article class="detail-card" id="hgnn">
-            <h3>Topology-Aware Hypergraph Neural Networks</h3>
-            <p>Hypergraph construction using DOSAGE and graph learning techniques for node classification and information retrieval tasks.</p>
-            <div class="mini-tags"><span>HGNN</span><span>DOSAGE</span><span>PyTorch</span></div>
+
+          <article class="card" id="hgnn">
+            <img src="images/dosage-hgnn-results.png" alt="HGNN results">
+            <h3>Topology-Aware Hypergraph Construction for HGNNs</h3>
+            <p class="meta">2025</p>
+            <p>
+              Developed and evaluated topology-aware hypergraph construction methods using DOSAGE
+              on the Cora citation dataset for node classification.
+            </p>
+            <div class="pipeline"><span>HGNN</span><span>DOSAGE</span><span>Graph Learning</span><span>PyTorch</span></div>
           </article>
-          <article class="detail-card" id="breast-cancer">
-            <h3>Breast Cancer Subtype Classification</h3>
-            <p>Machine learning framework using METABRIC data, SMOTE balancing, feature selection, Random Forest, and SVM classification.</p>
-            <div class="mini-tags"><span>Healthcare AI</span><span>Random Forest</span><span>SVM</span></div>
+
+          <article class="card" id="breast-cancer">
+            <img src="images/breast-cancer-pipeline.png" alt="Breast cancer ML pipeline">
+            <h3>Breast Cancer Subtype Classification using Machine Learning</h3>
+            <p class="meta">2025</p>
+            <p>
+              Built a machine learning pipeline using METABRIC data with preprocessing, SMOTE,
+              feature selection, Random Forest, and SVM classification.
+            </p>
+            <div class="pipeline"><span>Random Forest</span><span>SVM</span><span>SMOTE</span><span>Healthcare AI</span></div>
+          </article>
+
+          <article class="card">
+            <img src="images/archvision-poster.png" alt="ArchVision project">
+            <h3>ArchVision: From CNNs to Multimodal</h3>
+            <p class="meta">2025</p>
+            <p>
+              Evaluated deep learning and multimodal architectures for scene classification using 25,000+
+              images and 270+ controlled experiments.
+            </p>
+            <div class="pipeline"><span>Deep Learning</span><span>CLIP</span><span>Swin Transformers</span><span>Computer Vision</span></div>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section" id="publications">
+    <section id="publications">
       <div class="container">
-        <div class="section-title">
+        <div class="heading">
           <span>Publications</span>
           <h2>Research Work</h2>
         </div>
-        <div class="detail-grid two">
-          <article class="detail-card">
-            <span class="status">Accepted / In Press</span>
+
+        <div class="two-col">
+          <article class="card">
+            <img src="images/dsllm-transformer-architecture.png" alt="Domain-specific LLM architecture">
             <h3>A Comparative Study on Domain-Specific LLMs: Architecture and Performance</h3>
-            <p>Accepted at NLPIR 2025 and in press with Springer LNNS. The work reviews domain-specific LLMs across architectures, domains, and evaluation benchmarks.</p>
+            <p class="meta">Accepted at NLPIR 2025 · Springer LNNS</p>
+            <p>
+              Comparative review of domain-specific large language models across architectures,
+              domains, and evaluation benchmarks.
+            </p>
+            <div class="pipeline"><span>LLMs</span><span>NLP Research</span><span>Transformer Architectures</span></div>
           </article>
-          <article class="detail-card">
-            <span class="status">Ongoing Research</span>
-            <h3>HLFEval: Sentence-Level Evaluation of LLM Text Responses</h3>
-            <p>Ongoing work on interpretable, multi-metric evaluation for generated text across semantic relevance, fluency, safety, and factuality.</p>
+
+          <article class="card">
+            <img src="images/full.png" alt="HLFEval research framework">
+            <h3>HLFEval: Sentence-Level Evaluation of LLM Responses</h3>
+            <p class="meta">Ongoing Research · University of Windsor</p>
+            <p>
+              Ongoing research developing a transparent and adaptive multi-dimensional evaluation framework
+              for LLM-generated text.
+            </p>
+            <div class="pipeline"><span>LLM Evaluation</span><span>Safety</span><span>Factuality</span></div>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section contact" id="contact">
-      <div class="container contact-box">
-        <h2>Let’s connect</h2>
-        <p>I am open to opportunities in AI evaluation, applied machine learning, QA testing, data analytics, computer vision, and technical research.</p>
-        <div class="hero-actions center">
-          <a class="btn btn-primary" href="mailto:Nehmehaidura@gmail.com">Email Me</a>
-          <a class="btn btn-secondary" href="https://www.linkedin.com/in/nehme-haidura" target="_blank" rel="noopener">LinkedIn</a>
-          <a class="btn btn-secondary" href="https://github.com/nehme-haidura" target="_blank" rel="noopener">GitHub</a>
+    <section id="contact">
+      <div class="container contact">
+        <div class="heading">
+          <span>Contact</span>
+          <h2>Let’s connect</h2>
+        </div>
+        <p>
+          I am open to opportunities in AI evaluation, machine learning, NLP, QA testing,
+          data analytics, computer vision, and applied AI research.
+        </p>
+        <br>
+        <div class="hero-buttons" style="justify-content:center;">
+          <a class="btn primary" href="mailto:Nehmehaidura@gmail.com">Email Me</a>
+          <a class="btn" href="https://www.linkedin.com/in/nehme-haidura" target="_blank">LinkedIn</a>
+          <a class="btn" href="https://github.com/nehme-haidura" target="_blank">GitHub</a>
         </div>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="container">© 2026 Nehme Haidura</div>
+    © 2026 Nehme Haidura
   </footer>
 </body>
 </html>
